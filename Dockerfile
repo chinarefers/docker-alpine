@@ -1,16 +1,16 @@
 FROM alpine:3.5
-# Dockername  alpine:node-base
-# A few problems with compiling Java from source:
-#  1. Oracle.  Licensing prevents us from redistributing the official JDK.
-#  2. Compiling OpenJDK also requires the JDK to be installed, and it gets
-#       really hairy.
-
-# Default to UTF-8 file.encoding
-
+# Dockername  wangxiaolei/alpine:3.5
+# 1.替换清华大学源
+# 2.安装OpenJDK并设置系统变量
+# 3.安装bash
+# 4.默认UTF-8
+# 4.Dockerfile使用方法： docker build -t wangxiaolei/alpine:3.5 .
+# 5.镜像使用方法：docker run -it --rm wangxiaolei/alpine:3.5 bash 
 
 ENV LANG C.UTF-8
 
 MAINTAINER wangxiaolei(王小雷) “http://blog.csdn.net/dream_an https://github.com/wxiaolei”
+ARG GPG_KEY=40935508C4A60BFA228526FB38C14CBE28E97588
 
 RUN echo  "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.5/community/"  > /etc/apk/repositories
 RUN echo  "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.5/main/"  >> /etc/apk/repositories
